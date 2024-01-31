@@ -2,7 +2,7 @@ import express from 'express';
 import {PORT, mongoDBURL} from './config.js';
 import mongoose from 'mongoose'
 import { User } from 'file:///C:/Ben/Programming/MERN_stack_website/backend/models/userModels.js';
-
+import cors from 'cors';
 
 import UserRoutes from './routes/UserRoutes.js';
 
@@ -16,8 +16,8 @@ app.use(express.json());
 //middleware for handling cors policy
 app.use(
   cors({
-    origin: 'http:/localhost:3000',
-    methods:['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+    origin: 'http://localhost:3000',
+    methods:['GET', 'POST', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 )
