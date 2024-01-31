@@ -9,7 +9,18 @@ import UserRoutes from './routes/UserRoutes.js';
 
 const app = express();
 
+//middleware for parsing request bodies
 app.use(express.json());
+
+
+//middleware for handling cors policy
+app.use(
+  cors({
+    origin: 'http:/localhost:3000',
+    methods:['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+)
 
 app.get('/', (request, response) => {
     console.log(request);
