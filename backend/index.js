@@ -16,16 +16,16 @@ app.use(express.json());
 //middleware for handling cors policy
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:5173',
     methods:['GET', 'POST', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 )
 
-app.get('/', (request, response) => {
+/*app.get('/', (request, response) => {
     console.log(request);
     return response.status(234).send('Welcome To Bens MERN website ');
-  });
+  });*/
 
   
 app.use('/users', UserRoutes);

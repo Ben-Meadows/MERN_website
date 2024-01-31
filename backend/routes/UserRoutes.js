@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-router.get('/', async (req, res) => {
+router.get('/login', async (req, res) => {
     try {
         const users = await User.find({});
         res.send(users);

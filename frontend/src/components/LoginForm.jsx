@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const loginform = () => {
+const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const loginform = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5555/login', { username, password });
+      const response = await axios.post('http://localhost:5555/users/login', { username, password });
       if (response.data.success) {
         navigate('/valentines'); // Redirect to Valentines page
       } else {
@@ -42,4 +42,4 @@ const loginform = () => {
   );
 };
 
-export default loginform;
+export default LoginForm;
