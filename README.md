@@ -62,7 +62,7 @@ Express.js
 - **License**: If your project is open-source, include the license information. I've mentioned MIT License as a placeholder.
 - **`.env` Instructions**: Ensure that users know what environment variables are needed. The `.env` file is not uploaded to GitHub for security reasons, but users should know what to include in their own.
 
-Remember, a good README is crucial for anyone who visits your repository, as it's the first thing they see. It should be clear, informative, and provide all the necessary instructions for someone to understand, use, or contribute to your project.
+
 
 
 
