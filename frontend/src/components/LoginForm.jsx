@@ -14,12 +14,16 @@ const LoginForm = () => {
     try {
       const response = await axios.post('http://localhost:5555/users/login', { username, password });
       if (response.data.success) {
+        
+        // Store the token in local storage
+        localStorage.setItem('token', response.data.token);
+
         navigate('/valentines'); // Redirect to Valentines page
       } else {
-        // Handle login failure (e.g., show error message)
+        console.log('Login failed:', response.data.message);
       }
     } catch (error) {
-      // Handle error (e.g., show error message)
+      console.error('Error during login:', error.response ? error.response.data : error);
     }
   };
 

@@ -1,8 +1,20 @@
 import express from 'express';
 import { User } from 'file:///C:/Ben/Programming/MERN_stack_website/backend/models/userModels.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
+
 
 const router = express.Router();
+
+const createToken = (_id) => {
+    try {
+        return jwt.sign({ _id }, process.env.SECRET, { expiresIn: '3d' });
+    } catch (error) {
+        console.error("Error creating token:", error);
+        // Handle the error appropriately
+    }
+}
 
 
 router.post('/register', async (req, res) => {
@@ -24,8 +36,13 @@ router.post('/register', async (req, res) => {
         // Save user to database
         await newUser.save();
 
-        res.status(201).json({ message: 'User created successfully' });
+        
+        const token = createToken(newUser._id);
+
+        console.log('Token generated:', token);
+        res.status(201).json({username,token, message: 'User created successfully' });
     } catch (error) {
+        console.error('Error in registration:', error);
         res.status(500).send('Server error');
     }
 });
@@ -39,8 +56,14 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({ username });
         if (user && bcrypt.compareSync(password, user.password)) {
             // Authentication successful
-            // Here, you can also generate a token or set up a session
-            res.json({ success: true });
+            // Generate a token
+            
+            const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: '3d' });
+            
+            console.log('Token generated:', token);
+            
+            // Send token back to client
+            res.json({ success: true, token });
         } else {
             // Authentication failed
             res.status(401).json({ message: 'Invalid username or password' });

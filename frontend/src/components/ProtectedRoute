@@ -1,0 +1,19 @@
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      // Redirect to login page if no token is found
+      navigate('/');
+    }
+  }, [token, navigate]); // Dependencies array to avoid unnecessary redirections
+
+  // If there's a token, render the children, otherwise render null
+  return token ? children : null;
+};
+
+export default ProtectedRoute;
