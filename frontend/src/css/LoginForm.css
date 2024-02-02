@@ -1,0 +1,70 @@
+body.login-form-page {
+    background-color: #f4f7f6; /* Neutral background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif; /* Modern, readable font */
+}
+
+.login-header {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 30px; /* Adds space between the header and the form */
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    max-width: 350px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-wrapper {
+    width: 90%; /* Match input width to keep consistent spacing */
+    margin-bottom: 20px; /* Adjust spacing between input fields */
+}
+
+.login-input {
+    width: 100%; /* Use full width of the wrapper */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.login-input:focus {
+    border-color: #007bff; /* Accent color on focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.login-button {
+    width: 90%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: rgb(13, 13, 13);
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 0; /* Remove margin-top to tighten up the layout */
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.login-button:focus {
+    outline: none;
+}

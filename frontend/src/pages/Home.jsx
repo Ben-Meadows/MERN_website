@@ -4,7 +4,6 @@ import LoginForm from '../components/LoginForm.jsx';  // Adjust the path as need
 const Home = () => {
   return (
     <div>
-      <h1>Login</h1>
       <LoginForm />
     </div>
   );

@@ -1,18 +1,20 @@
-
-
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../css/Valentines.css'; // Adjust the path as needed
 
 export const Valentines = () => {
-  /*const handleYesClick = () => {
-    console.log("Yes clicked");
-    // You can add more logic here, like redirecting to another page
-    alert("Yes clicked! More actions to be added.");
-  };*/
+  
+  const navigate = useNavigate();
+  const handleYesClick = () => {
+    navigate('/yes'); // Navigate to the YesPage
+  };
 
   const handleNoMouseOver = () => {
     const noButton = document.getElementById('noButton');
-    noButton.style.position = 'fixed'; // Change to fixed when hovered
-  
+     
+    
+
     const maxX = window.innerWidth - noButton.offsetWidth;
     const maxY = window.innerHeight - noButton.offsetHeight;
     const x = Math.random() * maxX;
@@ -20,7 +22,19 @@ export const Valentines = () => {
   
     noButton.style.left = `${x}px`;
     noButton.style.top = `${y}px`;
+
+    
   };
+
+  useEffect(() => {
+    // Add a class to the body
+    document.body.classList.add('valentines-page');
+
+    // Remove the class when the component unmounts
+    return () => {
+      document.body.classList.remove('valentines-page');
+    };
+  }, []);
 
    return (
     <div className="container">
@@ -29,8 +43,8 @@ export const Valentines = () => {
         <img src="https://media.giphy.com/media/LnKonfpQ44fNvuGLkA/giphy.gif" alt="Cute animated illustration" />
       </div>
       <div className="buttons">
-        <button className="btn" id="yesButton" onClick={() => console.log('Yes Clicked')}>Yes</button>
-        <button className="btn" id="noButton" onMouseOver={handleNoMouseOver}>No</button>
+        <button className="btn yes-btn" id="yesButton" onClick={handleYesClick}>Yes</button>
+        <button className="btn no-btn" id="noButton" onMouseOver={handleNoMouseOver}>No</button>
       </div>
     </div>
   );
